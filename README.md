@@ -10,3 +10,5 @@ This project is created for competition (PKM-KC) held by Indonesian Ministry of 
 
 
 ## Non technical documentation
+- PPT PKM-KC GLOVITOO.pptx : pitching deck (indonesian)
+- Progress Report.docx : reporting progress for competition (indonesian)
