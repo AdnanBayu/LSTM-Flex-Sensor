@@ -1,0 +1,32 @@
+Iteration 1:
+- normalization using min 2200 and max 4100
+- normalize imu by dividing using int 20
+- total row for each label isn't equal
+- model: LSTM 64, LSTM 128, LSTM 64, Dense 64, Dense 32, Dense 26
+- initial LR 5 x 10e-4
+- batch size 32
+- epoch 150
+- LR reducer: factor 0.8, patience 7, min LR 1 x 10e-6
+
+Iteration 2:
+- - normalization using min 2200 and max 4100
+- normalize imu by dividing using int 20
+- total row for each label isn't equal
+- model: LSTM 64, LSTM 128, Dense 64, Dense 26
+- initial LR 5 x 10e-4
+- batch size 32
+- epoch 150
+- LR reducer: factor 0.8, patience 7, min LR 1 x 10e-6
+
+Iteration 3:
+- LR reducer: factor 0.5, patience 5, min LR 1 x 10e-6
+
+Iteration 4:
+- use pytorch
+- epoch 200, learning rate 1e-4, patience 5
+- use lr scheduler
+- Adam optimizer
+- Data sequence length 20
+- Model use 2 layers stacked lstm, lstm dropout 0.3, hidden size 64, input size 5, batch normalization, flatten layer (seq length * hidden size)
+- batch size 32
+- one label for one sequential data (20 row, 1 one hot encoded label)
