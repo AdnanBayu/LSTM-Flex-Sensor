@@ -45,7 +45,7 @@ class LSTMPipeline:
         data_np = []
         for i, data in enumerate(data):
             d = data.split(',')
-            flex_data = [round(apply_threshold(float(d[i]), 2500, 4000), 2) for i in range(5)]
+            flex_data = [round(apply_threshold(float(d[i]), 2500, 4100), 2) for i in range(5)]
             # d = flex_data + d[8:-1] + [d[-1].strip()]  
             d = flex_data
             d = [float(x) for x in d]
