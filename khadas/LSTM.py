@@ -2,11 +2,10 @@ import torch
 import numpy as np
 from models.LSTM.LSTMModel import SIBILSTMModel
 from lstm_tools import apply_threshold, read_config, output_audio
-from lstm_tools import apply_threshold, read_config, output_audio
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
-# LSTM_WEIGHTS = "models/LSTM/lstm_flex_imu_best_model5.pth"
-LSTM_WEIGHTS = "models/LSTM/lstm_flex_best_model5.pth"
+# LSTM_WEIGHTS = "models/LSTM/lstm_flex_imu_best_model6.pth"
+LSTM_WEIGHTS = "models/LSTM/lstm_flex_best_model6.pth"
 
 class LSTMPipeline:
     def __init__(self, 
@@ -15,8 +14,8 @@ class LSTMPipeline:
                  seq_len=20,
                  counter_limit = 30
                  ):
-        # self.model = SIBILSTMModel(input_size=11, hidden_size=64, num_layers=2, output_size=26, seq_length=seq_len).to(device)
-        self.model = SIBILSTMModel(input_size=5, hidden_size=64, num_layers=2, output_size=26, seq_length=seq_len).to(device)
+        # self.model = SIBILSTMModel(input_size=11, hidden_size=64, num_layers=3, output_size=26, seq_length=seq_len).to(device)
+        self.model = SIBILSTMModel(input_size=5, hidden_size=64, num_layers=3, output_size=26, seq_length=seq_len).to(device)
         self.model.load_state_dict(torch.load(model_path, weights_only=True, map_location='cpu'))
 
         self.thresholds = read_config(config_path=config_path)

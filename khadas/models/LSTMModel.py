@@ -1,6 +1,6 @@
 import torch
 import torch.nn as nn
-import torch.nn.functional as F
+import torch.nn.functional as Functional
 
 torch.manual_seed(0)
 
@@ -14,7 +14,10 @@ class SIBILSTMModel(nn.Module):
 
     self.lstm = nn.LSTM(input_size, hidden_size, num_layers, dropout=0.3, batch_first=True, bidirectional=True)
     self.flatten = nn.Flatten()
-    self.fc = nn.Linear(in_features=seq_length*hidden_size*2, out_features=output_size)
+    self.bn = nn.BatchNorm1d(seq_length*hidden_size*2)
+    self.fc1 = nn.Linear(in_features=seq_length*hidden_size*2, out_features=hidden_size)
+    self.fc2 = nn.Linear(in_features=hidden_size, out_features=output_size)
+
 
   def forward(self, x):
     num_directions = 2
@@ -24,8 +27,8 @@ class SIBILSTMModel(nn.Module):
     out, _ = self.lstm(x, (h0, c0))
     out_flat = self.flatten(out)
 
-    out_fc = self.fc(out_flat)
-    # pred = Functional.softmax(out_fc)
-    pred = out_fc
+    out_fc1 = self.fc1(self.bn(Functional.relu(out_flat)))
+    out_fc2 = self.fc2(Functional.relu(out_fc1))
+    pred = out_fc2
 
     return pred

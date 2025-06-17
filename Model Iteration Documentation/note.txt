@@ -44,3 +44,11 @@ Iteration 5:
 - train size 65, val size 17.5, test size 17.5
 - 1 fc output layer, flatten layer, no SoftMax at final layer
 - lstm stack : 2
+
+Iteration 6:
+- use pytorch
+- bidirectional lstm
+- train size 60, val size 20, test size 20
+- 1 fc output layer, flatten layer, batch normalization layer, relu act function. no SoftMax at final layer
+- lstm stack : 3
+- normalization min: 2500, max: 4100
