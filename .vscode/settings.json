@@ -3,5 +3,22 @@
         "*.inc": "cpp",
         "istream": "cpp",
         "ostream": "cpp"
-    }
+    },
+    "sqltools.connections": [
+        {
+            "mysqlOptions": {
+                "authProtocol": "xprotocol",
+                "enableSsl": "Disabled"
+            },
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 33060,
+            "driver": "MySQL",
+            "name": "IdeaBox Local",
+            "database": "ideabox",
+            "username": "root",
+            "password": "Suksesmuda2712",
+            "connectionTimeout": 30
+        }
+    ]
 }

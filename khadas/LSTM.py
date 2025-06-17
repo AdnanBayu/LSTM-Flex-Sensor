@@ -5,7 +5,8 @@ from lstm_tools import apply_threshold, read_config, output_audio
 from lstm_tools import apply_threshold, read_config, output_audio
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
-LSTM_WEIGHTS = "models/LSTM/lstm_flex_imu_best_model4.pth"
+# LSTM_WEIGHTS = "models/LSTM/lstm_flex_imu_best_model5.pth"
+LSTM_WEIGHTS = "models/LSTM/lstm_flex_best_model5.pth"
 
 class LSTMPipeline:
     def __init__(self, 
@@ -14,7 +15,8 @@ class LSTMPipeline:
                  seq_len=20,
                  counter_limit = 30
                  ):
-        self.model = SIBILSTMModel(input_size=11, hidden_size=64, num_layers=2, output_size=26, seq_length=seq_len).to(device)
+        # self.model = SIBILSTMModel(input_size=11, hidden_size=64, num_layers=2, output_size=26, seq_length=seq_len).to(device)
+        self.model = SIBILSTMModel(input_size=5, hidden_size=64, num_layers=2, output_size=26, seq_length=seq_len).to(device)
         self.model.load_state_dict(torch.load(model_path, weights_only=True, map_location='cpu'))
 
         self.thresholds = read_config(config_path=config_path)
@@ -43,17 +45,17 @@ class LSTMPipeline:
         data_np = []
         for i, data in enumerate(data):
             d = data.split(',')
-            #d[0] =str( float(d[0]) + 300 )
-            #print(d)
-            flex_data = [round(apply_threshold(float(d[i]), 2200, 4100), 2) for i in range(5)]
-            d = flex_data + d[8:-1] + [d[-1].strip()]  
+            flex_data = [round(apply_threshold(float(d[i]), 2500, 4000), 2) for i in range(5)]
+            # d = flex_data + d[8:-1] + [d[-1].strip()]  
+            d = flex_data
             d = [float(x) for x in d]
-            for i in range(5, 8):
-                d[i] = round(d[i]/20, 2)
+            # for i in range(5, 8):
+            #     d[i] = round(d[i]/20, 2)
                 
             data_np.append(d)
         data_np = np.array(data_np)
-        data_np = data_np.reshape((1, 20, 11))
+        # data_np = data_np.reshape((1, 20, 11))
+        data_np = data_np.reshape((1, 20, 5))
         data_torch = torch.from_numpy(data_np).float()
         return data_torch
     

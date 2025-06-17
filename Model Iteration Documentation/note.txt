@@ -30,3 +30,17 @@ Iteration 4:
 - Model use 2 layers stacked lstm, lstm dropout 0.3, hidden size 64, input size 5, batch normalization, flatten layer (seq length * hidden size)
 - batch size 32
 - one label for one sequential data (20 row, 1 one hot encoded label)
+- test accuracy only +-50%
+
+Iteration 4:
+- use pytorch
+- bidirectional lstm
+- 1 fc (as output layer)
+- add SoftMax at final layer
+
+Iteration 5:
+- use pytorch
+- bidirectional lstm
+- train size 65, val size 17.5, test size 17.5
+- 1 fc output layer, flatten layer, no SoftMax at final layer
+- lstm stack : 2
