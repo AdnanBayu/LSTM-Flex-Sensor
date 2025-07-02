@@ -3,7 +3,6 @@
 #include <Mux.h>
 
 #include <Adafruit_MPU6050.h>
-#include <Adafruit_SSD1306.h>
 #include <Adafruit_Sensor.h>
 
 const char SSID[] = "khadas_ap";
@@ -22,7 +21,6 @@ MQTTClient client;
 unsigned long lastMillis = 0, lastSensorSend=0;
 
 Adafruit_MPU6050 mpu;
-Adafruit_SSD1306 display = Adafruit_SSD1306(128, 32, &Wire);
 admux::Mux glove(admux::Pin(SEN_IN, INPUT, admux::PinType::Analog), admux::Pinset(SET_A, SET_B, SET_C));
 
 
@@ -51,15 +49,11 @@ void connect(){
   Serial.print("Connecting");
   while (WiFi.status() != WL_CONNECTED) {
     Serial.print(".");
-    display.print(".");
-    display.display();
     delay(500);
   }
 
   while (!client.connect("glovitoo-esp32", "acumalaka", "aezakmi123")) {
     Serial.print(".");
-    display.print(".");
-    display.display();
     delay(500);
   }
 
@@ -71,32 +65,10 @@ void connect(){
 void setup() {
   Serial.begin(115200);
 
-  //OLED
-  Serial.println("Beginning OLED");
-  if (!display.begin(SSD1306_SWITCHCAPVCC, 0x3C)) {
-    Serial.println(("SSD1306 allocation failed"));
-    for (;;)
-      ;
-  }
-  Serial.println("OLED SUCCESS!");
-  display.display();
-  delay(500);
-  display.setTextSize(1);
-  display.setTextColor(WHITE);
-  display.setRotation(0);
-
-  display.clearDisplay();
-  display.setCursor(0, 0);
-  display.println("OLED SUCCESS!");
-  display.display();
-  delay(500);
-  ////////////////////////////////
-
   //MPU sensor
   Serial.println("Beginning MPU");
   if (!mpu.begin()) {
     Serial.println("Sensor init failed");
-    display.display();
     while (1)
       yield();
   }
@@ -121,7 +93,7 @@ void loop() {
       connect();
     }
 
-    if((millis() - lastSensorSend) > 50){
+    if((millis() - lastSensorSend) > 1){
       client.publish("glovitoo/sensors", allSensor());
       lastSensorSend=millis();
     }

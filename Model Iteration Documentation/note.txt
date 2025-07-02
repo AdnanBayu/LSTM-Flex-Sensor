@@ -51,4 +51,59 @@ Iteration 6:
 - train size 60, val size 20, test size 20
 - 1 fc output layer, flatten layer, batch normalization layer, relu act function. no SoftMax at final layer
 - lstm stack : 3
+- 2 fully connected layer
 - normalization min: 2500, max: 4100
+
+Iteration 7:
+- remove batch normalization layer, use layer normalization instead
+- validation accuracy 95,48
+
+Iteration 8:
+- lstm 3 layers, bidirectional, use last output only
+- flex imu val accuracy : 97.49
+- flex val accuracy : 92.07
+
+Iteration 9:
+- fixed test score function
+- lstm 3 layers, bidirectional, use last output only, dropout layer
+- only use data from zalfa, anes, ade, alfa
+- train size 0.8, test size 0.1, val size 0.1
+- sequence window stride: 2
+- flex val accuracy: 94.55 ; test accuracy: 95
+- flex imu val accuracy: 98.4 ; test accuracy: 98
+
+Iteration 10:
+- use all data except anis
+- flex val accuracy: 97.06 ; test accuracy: 97
+- flex imu val accuracy: 99.84 ; test accuracy: 99
+
+Iteration 11:
+- use all data except anis
+- train size 70%
+- use flatten layer
+- use only 20 last row
+- flex val accuracy: 97.06 ; test accuracy: 97
+- flex imu val accuracy: 99.84 ; test accuracy: 99
+
+Iteration 12:
+- use only data from ade, alfa, zalfa, timo, nurhadi, bayu, anes
+
+Iteration 13:
+- use only data from nurhadi, amalia, bayu, ade
+
+Iteration 14:
+- use new synthetic data
+
+Iteration 15:
+- adjustment on synthetic data
+- not use data from alfa and ade
+
+Iteration 16:
+- adjustment on synthetic data
+- remove data from alfa, ade, zalfa, anes
+
+Iteration 17:
+- adjustment on synthetic data
+
+Iteration 18:
+- adjustment on synthetic data

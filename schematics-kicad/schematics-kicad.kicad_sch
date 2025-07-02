@@ -2947,7 +2947,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "50K"
+		(property "Value" "100K"
 			(at 236.22 43.1799 0)
 			(effects
 				(font
@@ -3152,7 +3152,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "50K"
+		(property "Value" "100K"
 			(at 220.98 43.1799 0)
 			(effects
 				(font
@@ -3222,7 +3222,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "50K"
+		(property "Value" "100K"
 			(at 278.13 43.1799 0)
 			(effects
 				(font
@@ -3610,7 +3610,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "50K"
+		(property "Value" "100K"
 			(at 251.46 43.1799 0)
 			(effects
 				(font
@@ -3820,7 +3820,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "50K"
+		(property "Value" "100K"
 			(at 265.43 43.1799 0)
 			(effects
 				(font
