@@ -107,3 +107,4 @@ Iteration 17:
 
 Iteration 18:
 - adjustment on synthetic data
+- use 2 layer stack lstm

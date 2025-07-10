@@ -14,8 +14,8 @@ class LSTMPipeline:
                  seq_len=20,
                  counter_limit = 30
                  ):
-        # self.model = SIBILSTMModel(input_size=11, hidden_size=64, num_layers=3, output_size=26).to(device)
-        self.model = SIBILSTMModel(input_size=5, hidden_size=64, num_layers=3, output_size=26).to(device)
+        # self.model = SIBILSTMModel(input_size=11, hidden_size=64, num_layers=4, output_size=26).to(device)
+        self.model = SIBILSTMModel(input_size=5, hidden_size=64, num_layers=4, output_size=26).to(device)
         self.model.load_state_dict(torch.load(model_path, weights_only=True, map_location='cpu'))
 
         self.thresholds = read_config(config_path=config_path)
