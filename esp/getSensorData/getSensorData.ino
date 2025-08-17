@@ -93,7 +93,7 @@ void loop() {
       connect();
     }
 
-    if((millis() - lastSensorSend) > 1){
+    if((millis() - lastSensorSend) > 50){
       client.publish("glovitoo/sensors", allSensor());
       lastSensorSend=millis();
     }
